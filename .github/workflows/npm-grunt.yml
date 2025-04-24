@@ -1,0 +1,36 @@
+name: Tag and release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          git fetch --tags
+          TAG=$(git describe --tags --abbrev=0 || echo "v0.0.0")
+          echo "latest=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Bump patch version and create tag
+        id: new_tag
+        run: |
+          old=${{ steps.get_tag.outputs.latest }}
+          IFS='.' read -r major minor patch <<< "${old#v}"
+          patch=$((patch + 1))
+          new="v$major.$minor.$patch"
+          echo "new_tag=$new" >> $GITHUB_OUTPUT
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag $new
+          git push origin $new
+
+      - name: Output new tag
+        run: echo "🚀 New tag created: ${{ steps.new_tag.outputs.new_tag }}"
