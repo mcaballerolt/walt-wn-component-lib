@@ -27,45 +27,45 @@ export type RelatedTopic = {
 }
 
 export type Course = {
-    id: number;
-    name: string;
-    general: string;
-    about_the_course: string;
-    what_you_will_learn: string;
-    logo: string | null;
-    banner: string | null;
-    study_time: number;
-    practice_time: number;
-    languages_id: number;
-    prerequisites: string;
-    providers_id: number;
-    resources_id: Resource[];
-    levels_id: number;
-    level: Level,
-    language: Language;
-    tests_id: number;
-    certificate: boolean;
-    is_private: boolean;
-    payment_required: boolean;
-    amount: number;
-    instructors_id: number[][];
-    customer_id: number;
-    is_active: boolean;
-    status_id: number;
-    category_id: number;
-    is_deleted: boolean;
-    topics_id: number[];
-    created_at: number;
-    certificate_template: CertificateTemplate | null;
-    related_topics: RelatedTopic[];
-    courses_topics: any[];
-    syllabus: string;
-    enrolled_users:number;
-    course_rates: number;
-    is_enrolled: boolean;
-    progress: number;
-    study_time_format: string;
-    study_time_2_format: string;
+  id: number;
+  name: string;
+  general: string;
+  about_the_course: string;
+  what_you_will_learn: string;
+  logo: string | null;
+  banner: string | null;
+  study_time: number;
+  practice_time: number;
+  languages_id: number;
+  prerequisites: string;
+  providers_id: number;
+  resources_id: Resource[];
+  levels_id: number;
+  level: Level,
+  language: Language;
+  tests_id: number;
+  certificate: boolean;
+  is_private: boolean;
+  payment_required: boolean;
+  amount: number;
+  instructors_id: number[][];
+  customer_id: number;
+  is_active: boolean;
+  status_id: number;
+  category_id: number;
+  is_deleted: boolean;
+  topics_id: number[];
+  created_at: number;
+  certificate_template: CertificateTemplate | null;
+  related_topics: RelatedTopic[];
+  courses_topics: any[];
+  syllabus: string;
+  enrolled_users: number;
+  course_rates: number;
+  is_enrolled: boolean;
+  progress: number;
+  study_time_format: string;
+  study_time_2_format: string;
 };
 
 interface CourseCardProps {
@@ -76,7 +76,7 @@ interface CourseCardProps {
 
 const CourseCard = ({ course, onButtonClick }: CourseCardProps) => {
   const theme = useTheme();
- 
+
   return (
     <Stack
       sx={{
@@ -103,8 +103,8 @@ const CourseCard = ({ course, onButtonClick }: CourseCardProps) => {
           <Typography
             variant='h6'
             fontWeight={500}
-            sx={{ 
-              height: '48px', 
+            sx={{
+              height: '48px',
               lineHeight: '24.2px',
               overflow: 'hidden',
               display: '-webkit-box',
