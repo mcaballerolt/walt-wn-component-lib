@@ -3,11 +3,12 @@ name: Tag and release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   tag:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
