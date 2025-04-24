@@ -42,4 +42,4 @@ jobs:
           git push origin $new
 
       - name: Output new tag
-        run: echo "🚀 New tag created: ${{ steps.bump_tag.outputs.new_tag }}"
+        run: 'echo "🚀 New tag created: ${{ steps.bump_tag.outputs.new_tag }}"'
