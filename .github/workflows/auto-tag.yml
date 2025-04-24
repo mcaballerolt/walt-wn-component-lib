@@ -38,8 +38,8 @@ jobs:
           echo "new_tag=$new" >> $GITHUB_OUTPUT
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag $new
-          git push origin $new
+          #git tag $new
+          #git push origin $new
 
       - name: Output new tag
         run: 'echo "🚀 New tag created: ${{ steps.bump_tag.outputs.new_tag }}"'
