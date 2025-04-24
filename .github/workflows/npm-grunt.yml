@@ -21,7 +21,7 @@ jobs:
           echo "latest=$TAG" >> $GITHUB_OUTPUT
 
       - name: Bump patch version and create tag
-        id: new_tag
+        id: bump_tag
         run: |
           old=${{ steps.get_tag.outputs.latest }}
           IFS='.' read -r major minor patch <<< "${old#v}"
@@ -34,4 +34,4 @@ jobs:
           git push origin $new
 
       - name: Output new tag
-        run: echo "🚀 New tag created: ${{ steps.new_tag.outputs.new_tag }}"
+        run: echo "🚀 New tag created: ${{ steps.bump_tag.outputs.new_tag }}"
