@@ -20,14 +20,19 @@ jobs:
         id: get_tag
         run: |
           git fetch --tags
-          TAG=$(git describe --tags --abbrev=0 || echo "v1.0.0")
+          TAG=$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -n 1)
           echo "latest=$TAG" >> $GITHUB_OUTPUT
 
       - name: Bump patch version and create tag
         id: bump_tag
         run: |
           old=${{ steps.get_tag.outputs.latest }}
-          IFS='.' read -r major minor patch <<< "${old#v}"
+          echo "Old tag: $old"
+          if [ -z "$old" ]; then
+            old="v1.0.0"
+          fi
+          version=${old#v}
+          IFS='.' read -r major minor patch <<< "$version"
           patch=$((patch + 1))
           new="v$major.$minor.$patch"
           echo "new_tag=$new" >> $GITHUB_OUTPUT
@@ -37,4 +42,4 @@ jobs:
           git push origin $new
 
       - name: Output new tag
-        run: 'echo "🚀 New tag created: ${{ steps.bump_tag.outputs.new_tag }}"'
+        run: echo "🚀 New tag created: ${{ steps.bump_tag.outputs.new_tag }}"
