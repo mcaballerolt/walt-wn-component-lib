@@ -1,6 +1,6 @@
-# React Component Library for Dual Applications
+# React Component Library for WALT and WN
 
-This project is a reusable component library built with **React 19** and **Material UI 7**. It is designed to serve **two separate applications** with a consistent set of UI components, ensuring a unified design system and development workflow.
+This project is a reusable component library built with **React 19** and **Material UI 7**. It is designed to serve **applications** with a consistent set of UI components, ensuring a unified design system and development workflow.
 
 ## ✨ Features
 
@@ -9,8 +9,3 @@ This project is a reusable component library built with **React 19** and **Mater
 - 📦 Easy to publish and consume as an NPM package
 - 🧱 Reusable and composable components
 - 🧪 Fully typed with TypeScript (optional)
-- 🌗 Theming support (light/dark modes)
-- 📚 Storybook integration (optional, add if used)
-
-## 📁 Project Structure
-
